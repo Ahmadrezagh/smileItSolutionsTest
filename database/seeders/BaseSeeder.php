@@ -17,7 +17,7 @@ abstract class BaseSeeder extends Seeder
     public function run()
     {
         $this->init();
-        if (!!config('app.faker_run')) {
+        if (boolval(config('app.faker_run'))) {
             $this->fake();
         }
     }
