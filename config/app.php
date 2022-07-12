@@ -45,6 +45,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Fake Data
+    |--------------------------------------------------------------------------
+    |
+    | When your application fake data is on , application will make
+    | fake data in addition to the initialize data.
+    | If disabled, application just create initialize data.
+    |
+    */
+
+    'faker_run' => (bool) env('FAKE_RUN', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
