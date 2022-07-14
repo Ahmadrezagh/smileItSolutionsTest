@@ -2,9 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class TransferResource extends JsonResource
+class TransferResource extends BaseResource
 {
     /**
      * Transform the resource into an array.
@@ -15,6 +14,7 @@ class TransferResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'code' => $this->resource->code,
             'from_account' => new AccountResource($this->resource->fromAccount),
             'to_account' => new AccountResource($this->resource->toAccount),
             'deposit_transaction' => new TransactionResource($this->resource->depositTransaction),

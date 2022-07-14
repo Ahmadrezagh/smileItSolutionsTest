@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('code')->unique();
             $table->foreignId('from_account_id')->constrained('accounts');
             $table->foreignId('to_account_id')->constrained('accounts');
             $table->foreignId('withdraw_transaction_id')->constrained('transactions');

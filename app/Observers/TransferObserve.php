@@ -17,6 +17,11 @@ class TransferObserve
      */
     public function creating(Transfer $transfer)
     {
+        $code = fake()->numberBetween(8);
+        while (Transfer::query()->where('code', $code)->exists()) {
+            $code = fake()->numberBetween(8);
+        }
+
         $depositTransaction = Transaction::create([
             'reason' => TransactionReason::TRANSFER(),
             'type' => TransactionType::DEPOSIT(),
@@ -32,6 +37,7 @@ class TransferObserve
 
         $transfer->setAttribute('deposit_transaction_id', $depositTransaction->id);
         $transfer->setAttribute('withdraw_transaction_id', $withdrawTransaction->id);
+        $transfer->setAttribute('code', $code);
     }
 
     /**
