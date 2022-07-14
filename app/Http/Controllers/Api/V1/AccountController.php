@@ -62,7 +62,7 @@ class AccountController extends Controller
      */
     public function update(UpdateAccountRequest $request, Account $account): AccountResource
     {
-        $account = $account->update($request->safe());
+        $account->update($request->safe()->toArray());
         return new AccountResource($account);
     }
 
