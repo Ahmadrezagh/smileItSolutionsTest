@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TransactionReason;
 use App\Enums\TransactionType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,5 +39,22 @@ class Transaction extends Model
     public function transfer(): HasOne
     {
         return $this->hasOne(Transfer::class);
+    }
+
+
+    public function scopeFilterByAccountCardNumber(Builder $builder, $account_card_number = null): Builder
+    {
+        if($account_card_number)
+        {
+            $builder->whereHas('account',function (Builder $query) use ($account_card_number) {
+                $query->where('card_number','=',$account_card_number);
+            });
+        }
+        return $builder;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'code';
     }
 }
