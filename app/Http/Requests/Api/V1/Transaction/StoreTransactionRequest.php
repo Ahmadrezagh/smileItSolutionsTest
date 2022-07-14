@@ -37,7 +37,8 @@ class StoreTransactionRequest extends FormRequest
     public function convertedData()
     {
         return $this->safe()->merge([
-            'account_id' => Account::query()->where('card_number', '=', $this->card_number)->first()->id
+            'account_id' => Account::query()->where('card_number', '=', $this->card_number)->first()->id,
+            'reason' => $this->type,
         ])->except([
             'card_number',
         ]);
