@@ -2,9 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class AccountResource extends JsonResource
+class AccountResource extends BaseResource
 {
     /**
      * Transform the resource into an array.
@@ -15,6 +14,7 @@ class AccountResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->resource->id,
             'user' => new UserResource($this->resource->user),
             'balance' => $this->resource->balance,
             'card_number' => $this->resource->card_number,

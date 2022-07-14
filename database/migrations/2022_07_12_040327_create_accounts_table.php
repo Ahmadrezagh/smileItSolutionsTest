@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('card_number')->unique();
             $table->string('password');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
