@@ -5,7 +5,9 @@
 </p>
 
 ## Smile IT Solutions Test
+
 <h3>Simple bank management system api</h3>
+
 ## Install
 - Run `git clone https://github.com/Ahmadrezagh/smileItSolutionsTest` 
 - Run `composer install`
